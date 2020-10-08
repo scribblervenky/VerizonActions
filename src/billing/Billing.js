@@ -3,6 +3,7 @@ import React from 'react'
 import { View, Image, StyleSheet, Dimensions, Linking, ScrollView } from 'react-native';
 import { Container, Header, Tab, Tabs, TabHeading, Icon, Text, Button } from 'native-base';
 import { pathMap } from '../util/imageRouter';
+import Current from './Current'
 import VerizonFooter from '../footer/VerizonFooter';
 
 const styles = StyleSheet.create({
@@ -19,7 +20,8 @@ const styles = StyleSheet.create({
     },
     tabText: {
         color: 'black',
-        fontSize: 16
+        fontSize: 16,
+        fontWeight: '700'
     },
 });
 
@@ -47,12 +49,7 @@ class Billing extends React.Component {
                             <Text style={styles.tabText}>Current</Text>
                         </TabHeading>
                     }>
-                        <ScrollView style={styles.container} >
-                            <Image
-                                style={styles.imagee}
-                                source={pathMap['thanks']}
-                            />
-                        </ScrollView>
+                        <Current {...this.props}/>
                     </Tab>
 
                     <Tab heading={
