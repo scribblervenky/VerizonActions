@@ -2,7 +2,9 @@ import React from 'react'
 
 import { View, Image, StyleSheet, Dimensions, Linking, ScrollView } from 'react-native';
 import { Container, Header, Tab, Tabs, TabHeading, Icon, Text, Button } from 'native-base';
-import VerizonFooter from '../footer/VerizonFooter'
+import { pathMap } from '../util/imageRouter';
+import VerizonFooter from '../footer/VerizonFooter';
+
 const styles = StyleSheet.create({
     container: {
         paddingTop: 0
@@ -20,20 +22,6 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
 });
-
-export const pathMap = {
-    thanks: require('./ss/1.jpeg'),
-    septBill: require('./ss/2.jpeg'),
-    nextBill: require('./ss/3.jpeg'),
-    latestPayment: require('./ss/4.jpeg'),
-    selectPayment: require('./ss/5.jpeg'),
-    paymentActivity: require('./ss/6.jpeg'),
-    addPayment: require('./ss/7.jpeg'),
-    welcome: require('./ss/8.jpeg'),
-    u848balance1: require('./ss/9.jpeg'),
-    u848balance2: require('./ss/10.jpeg'),
-}
-
 
 
 class Billing extends React.Component {

@@ -1,8 +1,7 @@
 import React from 'react'
 import { View, Image, StyleSheet, Dimensions, Linking, ScrollView } from 'react-native';
 import { Container, Text } from 'native-base';
-
-import { pathMap } from './Billing';
+import { pathMap } from '../util/imageRouter';
 import VerizonFooter from '../footer/VerizonFooter'
 
 class More extends React.Component {

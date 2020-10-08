@@ -5,6 +5,7 @@ import { Button, Icon, Text } from 'native-base';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { navigationRef } from './rootNavigation'
+import Home from '../home/Home'
 import Billing from '../billing/Billing'
 import MakePayment from '../billing/MakePayment'
 import Account from '../billing/Account'
@@ -18,7 +19,17 @@ class Routes extends Component {
 
         return (
             <NavigationContainer ref={navigationRef}>
-                <Stack.Navigator initialRouteName={'Billing'}>
+                <Stack.Navigator initialRouteName={'Home'}>
+
+                <Stack.Screen
+                        name="Home"
+                        component={Home}
+                        options={{
+                            headerTitle: props => (<Text style={styles.plainTitle} >Welcome</Text>),
+                            ...TransitionPresets.SlideFromRightIOS,
+                        }}
+                    />
+
 
                     <Stack.Screen
                         name="Billing"
@@ -39,28 +50,7 @@ class Routes extends Component {
                                     />
                                 </Button>
                             ),
-                        }}
-                    />
-
-                    <Stack.Screen
-                        name="MakePayment"
-                        component={MakePayment}
-                        options={{
-                            headerTitle: props => (<Text style={styles.title} >Make a payment</Text>),
-                            headerLeft: () => (
-                                <Button
-                                    rounded
-                                    transparent
-                                    style={{ borderRadius: 50 }}
-                                    androidRippleColor="black"
-                                >
-                                    <Icon
-                                        style={{ color: 'black' }}
-                                        type='AntDesign'
-                                        name="left"
-                                    />
-                                </Button>
-                            ),
+                            ...TransitionPresets.SlideFromRightIOS,
                         }}
                     />
 
@@ -83,6 +73,7 @@ class Routes extends Component {
                                     />
                                 </Button>
                             ),
+                            ...TransitionPresets.SlideFromRightIOS,
                         }}
                     />
 
@@ -105,6 +96,7 @@ class Routes extends Component {
                                     />
                                 </Button>
                             ),
+                            ...TransitionPresets.SlideFromRightIOS,
                         }}
                     />
 
@@ -120,6 +112,11 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
         left: -35
+    },
+    plainTitle: {
+        alignSelf: 'center',
+        fontSize: 20,
+        fontWeight: "bold"
     }
 });
 

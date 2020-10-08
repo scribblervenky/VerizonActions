@@ -8,9 +8,9 @@ export default class VerizonFooter extends Component {
     super(props);
   }
 
-  handleShopClick = () => {
+  handleHomeClick = () => {
     const { navigation } = this.props
-    navigation.navigate('MakePayment')
+    navigation.navigate('Home')
   }
   handleAccountClick = () => {
     const { navigation } = this.props
@@ -30,17 +30,17 @@ export default class VerizonFooter extends Component {
     return (
       <Footer>
         <FooterTab style={{ backgroundColor: "#FFF" }}>
-          <Button vertical onPress={this.handleBillingClick}>
+          <Button vertical onPress={this.handleHomeClick}>
             <Icon style={styles.icon} type="AntDesign" name="home" />
             <Text style={styles.text}>Home</Text>
+          </Button>
+          <Button vertical onPress={this.handleBillingClick}>
+            <Icon style={styles.icon} type="MaterialCommunityIcons" name="shopping-outline" />
+            <Text style={styles.text}>Billing</Text>
           </Button>
           <Button vertical onPress={this.handleAccountClick}>
             <Icon style={styles.icon} type="MaterialCommunityIcons" name="account-circle-outline" />
             <Text style={styles.text}>Account</Text>
-          </Button>
-          <Button vertical onPress={this.handleShopClick}>
-            <Icon style={styles.icon} type="MaterialCommunityIcons" name="shopping-outline" />
-            <Text style={styles.text}>Shop</Text>
           </Button>
           <Button vertical onPress={this.handleMoreClick}>
             <Icon style={styles.icon} type="Entypo" name="menu" />
