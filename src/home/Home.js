@@ -1,12 +1,78 @@
 import React from 'react'
 
-import { View, Image, StyleSheet, Dimensions, Linking, ScrollView } from 'react-native';
+import {
+  View, Image, StyleSheet,
+  Dimensions, ScrollView, Linking
+} from 'react-native';
+import SplashScreen from 'react-native-splash-screen'
+import DeepLinking from 'react-native-deep-linking';
 import { Container, Text, List, ListItem, Left, Right, Icon } from 'native-base';
 import { pathMap } from '../util/imageRouter';
 import VerizonFooter from '../footer/VerizonFooter'
 
 class Home extends React.Component {
 
+
+  componentDidMount() {
+
+    DeepLinking.addScheme('verizon://');
+    DeepLinking.addScheme('https://www.verizon.com/');
+
+    Linking.addEventListener('url', this.handleUrl);
+
+    DeepLinking.addRoute('/actions', (response) => {
+      // verizon://actions
+      const { navigation } = this.props
+      navigation.navigate('Home')
+    });
+
+    DeepLinking.addRoute('/actions/bill', (response) => {
+      // verizon://actions/23
+      const { navigation } = this.props
+      navigation.navigate('Billing')
+
+    });
+
+    DeepLinking.addRoute('/actions/bill/:amount', (response) => {
+      // verizon://actions/100/details
+      const { navigation } = this.props
+      navigation.navigate('Billing', { 'amount': response.amount })
+    });
+
+    DeepLinking.addRoute('/actions/account', (response) => {
+      // verizon://actions/23
+      const { navigation } = this.props
+      navigation.navigate('Account')
+
+    });
+
+    DeepLinking.addRoute('/actions/more', (response) => {
+      // verizon://actions/23
+      const { navigation } = this.props
+      navigation.navigate('More')
+
+    });
+
+    Linking.getInitialURL().then((url) => {
+      if (url) {
+        DeepLinking.evaluateUrl(url);
+      }
+      SplashScreen.hide();
+    }).catch(err => console.error('An error occurred', err));
+  }
+
+  componentWillUnmount() {
+    Linking.removeEventListener('url', this.handleUrl);
+  }
+
+  handleUrl = ({ url }) => {
+    Linking.canOpenURL(url).then((supported) => {
+      if (supported) {
+        DeepLinking.evaluateUrl(url);
+        // Linking.openURL(url);
+      }
+    });
+  }
 
   render() {
     return (
@@ -24,7 +90,7 @@ class Home extends React.Component {
           <View style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>
             <List>
               <ListItem>
-                <View style={{backgroundColor:'black', height: 10, width: Dimensions.get('window').width*0.85}}/>
+                <View style={{ backgroundColor: 'black', height: 10, width: Dimensions.get('window').width * 0.85 }} />
               </ListItem>
               <ListItem>
                 <Left>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VerizonActions</string>
+    <string name="verizon_https">VerizonHttpsActions</string>
+    <string name="verizon_view">VerizonViewActions</string>
 </resources>

@@ -12,6 +12,7 @@ class Current extends React.Component {
   }
 
   render() {
+    let bill = this.props.route.params ? this.props.route.params.amount : '364.19'
     return (
       <Container>
         <ScrollView style={styles.container}>
@@ -20,7 +21,7 @@ class Current extends React.Component {
               Thanks, Your bill
             </Text>
             <Text style={{ fontSize: 35, fontWeight: 'bold', paddingBottom: 10 }}>
-              is $364.19
+              is ${bill}
             </Text>
             <Text style={{ fontSize: 15, fontWeight: 'bold', paddingBottom: 10 }}>
               Sep 15 - Oct 15

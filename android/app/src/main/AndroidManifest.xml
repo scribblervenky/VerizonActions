@@ -20,6 +20,24 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+        <intent-filter android:label="@string/verizon_https">
+              <action android:name="android.intent.action.VIEW" />
+              <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.BROWSABLE" />
+              <!-- Accepts URIs that begin with "http://www.verizon.com/actions” -->
+              <data android:scheme="https"
+                    android:host="www.verizon.com"
+                    android:pathPrefix="/actions" />
+              <!-- note that the leading "/" is required for pathPrefix-->
+          </intent-filter>
+          <intent-filter android:label="@string/verizon_view">
+              <action android:name="android.intent.action.VIEW" />
+              <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.BROWSABLE" />
+              <!-- Accepts URIs that begin with "verizon://actions -->
+              <data android:scheme="verizon"
+                    android:host="actions" />
+          </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
